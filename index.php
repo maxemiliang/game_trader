@@ -1,6 +1,5 @@
 <?php
 
-
 error_reporting(E_ALL);
 ini_set('display_errors',1); // DEV ENV
 
@@ -89,10 +88,8 @@ $app->get("/logout", function() use ($app, $login)
 $app->get("/user/:id", function($id) use ($app) 
 {
 
-	
+
 
 	$app->render("user.php");
 
 });
-
-

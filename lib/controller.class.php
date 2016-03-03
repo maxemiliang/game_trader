@@ -16,10 +16,9 @@ class Rout
 {
 
 	public $pReq;
-
 	public $baseurl = "/game_trader"; // has to be set manually if using on a subdir
-
 	public $db;
+
 
 	public function __construct($db)
 	{
@@ -93,8 +92,6 @@ class Rout
 				$pReq = explode(":", $req);
 
 				$test = explode("/", $req);
-
-				print_r($params);
 
 			} else {
 
