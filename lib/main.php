@@ -8,3 +8,4 @@ $_SESSION["priv"] = 0;
 
 require "controller.class.php";
 require "login.class.php";
+require "dbh.class.php";

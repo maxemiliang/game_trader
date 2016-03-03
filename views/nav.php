@@ -13,7 +13,7 @@
       <a href="<?= $base ?>/login" class="pseudo button icon-picture">Login</a>
       <a href="<?= $base ?>/register" class="button icon-puzzle">Register</a>
     <?php } else { ?>
-      <a href="<?= $base ?>/user" class="pseudo button icon-picture">Logged In</a>
+      <a href="<?= $base ?>/user/<?= $_SESSION['user']; ?>" class="pseudo button icon-picture">Logged In as: <?= $_SESSION["user"]; ?></a>
       <a href="<?= $base ?>/logout" class="button icon-puzzle">Logout</a>
     <?php } ?>
   </div>

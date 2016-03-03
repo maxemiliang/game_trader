@@ -53,6 +53,8 @@ Class Login extends Rout
 
 				$_SESSION["userID"] = $v[0]["uID"];
 
+				$_SESSION["user"] = $v[0]["username"];
+
 				$_SESSION["priv"] = $v[0]["privileges"];
 
 				return true;
@@ -91,25 +93,31 @@ Class Login extends Rout
 
 		$v = $q->fetchAll();
 
-		if (count($v) <= 0 && strlen($password) >= 8 && strlen($username) >= 5) {
+		if (count($v) <= 0) {
 
-			$password = password_hash($password, PASSWORD_DEFAULT); //prepare password
+			if (strlen($password) >= 8 && strlen($username) >= 5) {
+				$password = password_hash($password, PASSWORD_DEFAULT); //prepare password
 
-			$sth = $this->db->prepare("INSERT INTO users (username, password, privileges) VALUES (?, ?, ?);");
+				$sth = $this->db->prepare("INSERT INTO users (username, password, privileges) VALUES (?, ?, ?);");
 
-			if($sth->execute(array($username, $password, $priv))) {
+				if($sth->execute(array($username, $password, $priv))) {
 
-				return true;
+					return 1; // added
 
+				} else {
+
+					return 3; // error with execute
+
+				}
 			} else {
 
-				return false;
+				return 2; //  error with length
 
 			}
 
 		} else {
 
-			return false;
+			return 4; // error user found 
 
 		}
 	}

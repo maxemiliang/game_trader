@@ -41,16 +41,25 @@ $app->get("/register", function() use ($app)
 $app->post("/adduser", function() use ($app, $login) 
 {
 
-	if ($login->createUser($_POST["username"], $_POST["password"], 1)) {
+	$adduser = $login->createUser($_POST["username"], $_POST["password"], 1);
+
+	if ($adduser == 1) {
 
 		$app->redirect("/", "");
 
+	} else if ($adduser == 2) {
+
+		$app->redirect("/register", "Username needs to be min 5 characters and Password needs to be min 8 characters");
+
+	} else if ($adduser == 4) {
+
+		$app->redirect("/register", "Username taken!");
+
 	} else {
 
-		$app->redirect("/register", "Username needs to be min 5 characthers and Password needs to be min 8 characthers");
+		$app->redirect("/register", "Unkown error, contact admin");
 
 	}
-
 });
 
 $app->post("/login/user", function() use ($app, $login) 
@@ -74,6 +83,15 @@ $app->get("/logout", function() use ($app, $login)
 	$login->tryLogout();
 
 	$app->redirect("/", "");
+
+});
+
+$app->get("/user/:id", function($id) use ($app) 
+{
+
+	
+
+	$app->render("user.php");
 
 });
 
