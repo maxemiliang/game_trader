@@ -85,7 +85,7 @@ $app->get("/logout", function() use ($app, $login)
 
 });
 
-$app->get("/user/:id", function($id) use ($app) 
+$app->get("/user/:id", function($id) use ($app, $dbh) 
 {
 
 
