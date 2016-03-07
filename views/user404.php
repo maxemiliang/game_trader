@@ -4,6 +4,6 @@
 
 ?>
 
-<div class="container">
-	<p>User Not found</p>
+<div class="container red">
+	<h1>User Not found</h1>
 </div>

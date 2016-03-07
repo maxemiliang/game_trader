@@ -31,6 +31,27 @@ Class Login extends Rout
 	}
 
 
+	public function hasSteam($id) {
+
+		$q = $this->db->prepare("SELECT * FROM users WHERE uID=?;");
+
+		$r = $q->execute(array($id));
+
+		$v = $q->fetchAll();
+
+		if ($v[0]["steam"] != "")  {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+		
+	}
+
+
 	public function getUserId() {
 
 		return $_SESSION["userID"];

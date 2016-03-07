@@ -20,10 +20,14 @@ class Rout
 	public $db;
 
 
-	public function __construct($db)
+	public function __construct()
 	{
+		
+		if (func_num_args() > 0) { 
+			
+			$this->db = func_get_arg(0);
 
-		$this->db = $db;
+		}
 
 	}
 

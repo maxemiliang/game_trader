@@ -19,7 +19,11 @@ $login->createUser("admin", "admin123", 999);
 $app->get("/", function() use ($app) 
 {
 
-	$app->render("home.php");
+	$q = $app->db->query("SELECT * FROM trades");
+
+	$r = $q->fetchAll();
+
+	$app->render("home.php", $r);
 
 });
 
@@ -27,6 +31,21 @@ $app->get("/login", function() use ($app)
 {
 
 	$app->render("login.php");
+
+});
+
+$app->get("/add", function() use ($app, $login) 
+{
+
+	if($login->isLoggedIn()) {
+		
+		$app->render("add.php");
+	
+	} else {
+
+		$app->redirect("/", "");
+
+	}
 
 });
 
@@ -90,8 +109,6 @@ $app->get("/user/:id", function($id) use ($app)
 
 	$query = $app->db->prepare("SELECT * FROM users WHERE username = ?"); 
 
-	print_r($id);
-
 	$query->execute(array($id));
 
 	$r = $query->fetchAll();
@@ -108,3 +125,70 @@ $app->get("/user/:id", function($id) use ($app)
 
 
 });
+
+
+$app->post("/update", function() use ($app, $login)
+{
+
+	$q = $app->db->prepare("UPDATE users SET steam=? WHERE uID=?");
+
+	if (preg_match("/(http|https):\/\/steamcommunity\.com\/tradeoffer\/new\/\?partner=[0-9]*&token=[a-zA-Z0-9_-]*/i", $_POST['url'])) {
+
+		$q->execute(array($_POST['url'], $_SESSION['userID']));
+
+		$app->redirect("/user/".$_SESSION["user"]."");
+
+	} else {
+
+		$app->redirect("/user/".$_SESSION["user"]."", "Not a valid steam url");
+
+	}
+
+});
+
+
+$app->post("/addtrade", function() use ($app, $login) 
+{
+
+	print_r($_POST);
+
+	if ($login->isLoggedIn()) {
+
+		if (exif_imagetype($_FILES["img"]["tmp_name"]) != false) {
+
+				$filename = tempnam('img/', 'img');
+	    		unlink($filename);
+	    		$period_position = strrpos($filename, ".");
+	   			$filename = substr($filename, 0, $period_position);
+	    		$file = substr($filename, -7);
+	    		$_POST['img'] = $file;
+
+	    		if (move_uploaded_file($_FILES['img']['tmp_name'], $filename)) {
+
+					$sql = "INSERT INTO trades (have, wants, text, img, userID, date) VALUES (?, ?, ?, ?, ?, NOW());";
+
+					$sth = $app->db->prepare($sql);
+
+					$sth->execute(array($_POST['have'], $_POST['want'], $_POST['text'], $_POST['img'], $_SESSION['userID']));
+
+					$app->redirect("/", "");
+
+				} else {
+
+					$app->redirect("/addtrade", "Upload failed");
+
+				}
+
+			} else {
+
+				$app->redirect("/addtrade", "File must be an image!");
+
+			}
+
+	} else {
+
+		$app->redirect("/", "");
+
+	}
+
+}); 
