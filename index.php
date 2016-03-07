@@ -85,11 +85,26 @@ $app->get("/logout", function() use ($app, $login)
 
 });
 
-$app->get("/user/:id", function($id) use ($app, $dbh) 
+$app->get("/user/:id", function($id) use ($app) 
 {
 
+	$query = $app->db->prepare("SELECT * FROM users WHERE username = ?"); 
 
+	print_r($id);
 
-	$app->render("user.php");
+	$query->execute(array($id));
+
+	$r = $query->fetchAll();
+
+	if(count($r) > 0) {
+
+		$app->render("user.php", $r);
+
+	} else {
+
+		$app->render("user404.php");
+
+	}
+
 
 });

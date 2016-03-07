@@ -1,3 +1,9 @@
+<?php 
+
+    require __DIR__."\lib\main.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +13,7 @@
 
     <title>Game Trader</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?= $app->baseUrl; ?>css/style.css">
     <link href="https://cdn.jsdelivr.net/g/picnicss@5.1.0(picnic.min.css+plugins.min.css)" rel="stylesheet">
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
