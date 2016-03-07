@@ -19,7 +19,7 @@ $login->createUser("admin", "admin123", 999);
 $app->get("/", function() use ($app) 
 {
 
-	$q = $app->db->query("SELECT * FROM trades");
+	$q = $app->db->query("SELECT trades.*, users.* FROM trades LEFT JOIN users ON users.uID=trades.userID ORDER BY date DESC;");
 
 	$r = $q->fetchAll();
 
@@ -154,34 +154,41 @@ $app->post("/addtrade", function() use ($app, $login)
 
 	if ($login->isLoggedIn()) {
 
-		if (exif_imagetype($_FILES["img"]["tmp_name"]) != false) {
+		if ($login->hasSteam($_SESSION["userID"])) {
 
-				$filename = tempnam('img/', 'img');
-	    		unlink($filename);
-	    		$period_position = strrpos($filename, ".");
-	   			$filename = substr($filename, 0, $period_position);
-	    		$file = substr($filename, -7);
-	    		$_POST['img'] = $file;
+			if (exif_imagetype($_FILES["img"]["tmp_name"]) != false) {
 
-	    		if (move_uploaded_file($_FILES['img']['tmp_name'], $filename)) {
+					$filename = tempnam('img/', 'img');
+		    		unlink($filename);
+		    		$period_position = strrpos($filename, ".");
+		   			$filename = substr($filename, 0, $period_position);
+		    		$file = substr($filename, -7);
+		    		$_POST['img'] = $file;
 
-					$sql = "INSERT INTO trades (have, wants, text, img, userID, date) VALUES (?, ?, ?, ?, ?, NOW());";
+		    		if (move_uploaded_file($_FILES['img']['tmp_name'], $filename)) {
 
-					$sth = $app->db->prepare($sql);
+						$sql = "INSERT INTO trades (have, wants, text, img, userID, date) VALUES (?, ?, ?, ?, ?, NOW());";
 
-					$sth->execute(array($_POST['have'], $_POST['want'], $_POST['text'], $_POST['img'], $_SESSION['userID']));
+						$sth = $app->db->prepare($sql);
 
-					$app->redirect("/", "");
+						$sth->execute(array($_POST['have'], $_POST['want'], $_POST['text'], $_POST['img'], $_SESSION['userID']));
+
+						$app->redirect("/", "");
+
+					} else {
+
+						$app->redirect("/add", "Upload failed");
+
+					}
 
 				} else {
 
-					$app->redirect("/addtrade", "Upload failed");
+					$app->redirect("/add", "File must be an image!");
 
 				}
-
 			} else {
 
-				$app->redirect("/addtrade", "File must be an image!");
+				$app->redirect("/add", "Please set a steam trade url");
 
 			}
 

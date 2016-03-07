@@ -12,7 +12,8 @@ USE `games`;
 DROP TABLE IF EXISTS `trades`;
 CREATE TABLE `trades` (
   `tID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
+  `have` varchar(100) NOT NULL,
+  `wants` varchar(300) NOT NULL,
   `text` mediumtext NOT NULL,
   `img` varchar(40) NOT NULL DEFAULT 'default.jpg',
   `userID` int(11) NOT NULL,
@@ -29,9 +30,9 @@ CREATE TABLE `users` (
   `username` varchar(60) NOT NULL,
   `password` varchar(255) NOT NULL,
   `privileges` smallint(6) NOT NULL DEFAULT '1',
-  `steam` varchar(400) NOT NULL,
+  `steam` varchar(600) NOT NULL,
   PRIMARY KEY (`uID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2016-03-03 07:28:44
+-- 2016-03-07 13:53:16

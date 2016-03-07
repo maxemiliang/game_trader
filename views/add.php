@@ -2,16 +2,17 @@
 
 	require "head.php";
 
+
+
+?>
+<?php
 	if (isset($_SESSION["redir"])) {
 		
 		echo "<p style='color:red'>{$_SESSION['redir']}</p>";
 		unset($_SESSION["redir"]);
 	
 	}
-
-
 ?>
-
 <div class="container">
 	<form id="post_trade" action="<?php echo $base ?>/addtrade" method="post" enctype= "multipart/form-data">
 		  <div class="form-group" >
