@@ -4,16 +4,13 @@ include "head.php";
 
 ?>
     
-<div class="container">
-
+<div class="pure-g">
 <?php
     foreach($v as $row) {
         ?>
+        <div class='pure-u-1-3 card'>
 
-        <div class='card'>
-        <div class="marg">
-
-        <img class="img" src="img/<?php echo $row['img'] ?>"alt="Image">
+        <img class="pure-img" src="img/<?php echo $row['img'] ?>"alt="Image">
 
         <h1>Has: <?php echo $row['have'] ?></h1>
         <h1>Want: <?php echo $row['wants'] ?></h1>
@@ -35,15 +32,12 @@ include "head.php";
         <a class='button' href='trade/<?php echo $row['tID']?>' role='button'>View this trade</a>
         <a class='button' href='exit/<?php echo $row['steam']?>' role='button'>Send Trade offer</a>
 
-
 		</div>
-        </div>
 
         <?php
     }
 ?>
-
 </div>
-
+</div>
 </body>
 </html>

@@ -13,8 +13,9 @@
 	
 	}
 ?>
-<div class="container">
-	<form id="post_trade" action="<?php echo $base ?>/addtrade" method="post" enctype= "multipart/form-data">
+	<form class="pure-form pure-form-stacked" id="post_trade" action="<?php echo $base ?>/addtrade" method="post" enctype= "multipart/form-data">
+	<fieldset>
+			<legend>Add a Trade</legend>
 		  <div class="form-group" >
 		    <label for="InputTitle">Have game:</label>
 		    <input type="text" name="have" class="form-control" id="InputTitle" placeholder="Have" required>
@@ -31,6 +32,7 @@
 		    <label for="InputFile">Picture of game</label>
 		    <input type="file" name="img" id="InputFile" required>
 		  </div>
-		  <button type="submit" class="btn btn-default">Submit</button>
+		  <button type="submit" class="pure-button pure-button-primary">Submit</button>
+		 </fieldset>
 	</form>
 </div>

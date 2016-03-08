@@ -3,8 +3,6 @@
 	include "head.php";
 
 ?>
-<div class="grid equal container">
-<h2>Register</h2>
 
 <?php 
 
@@ -17,12 +15,15 @@
 
 ?>
 
-		<form id="register" action="<?= $base ?>/adduser" method="post">
-			<label for="username">Username</label><br>
+		<form id="register" class="pure-form pure-form-stacked" action="<?= $base ?>/adduser" method="post">
+		<fieldset>
+			<legend>Register</legend>
+			<label for="username">Username</label>
 			<input type="text" placeholder="username" name="username" required>
-			<label for="password">Password</label><br>
+			<label for="password">Password</label>
 			<input type="password" placeholder="password" name="password" required>
-			<input type="submit" value="Register">
+			<input type="submit" class="pure-button pure-button-primary" value="Register">
+		</fieldset>
 		</form>
 	</div>
 </div>

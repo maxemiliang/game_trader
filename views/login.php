@@ -2,8 +2,6 @@
 	include "head.php";
 
 ?>
-<div class="grid equal container">
-<h2>Login</h2>
 
 <?php 
 
@@ -16,12 +14,15 @@
 
 ?>
 
-		<form id="login" action="<?= $base ?>/login/user" method="post">
-			<label for="username">Username</label><br>
+		<form id="login" action="<?= $base ?>/login/user" method="post" class="pure-form pure-form-stacked">
+		<fieldset>
+			<legend>Login</legend>
+			<label for="username">Username</label>
 			<input type="text" placeholder="username" name="username" required>
-			<label for="password">Password</label><br>
+			<label for="password">Password</label>
 			<input type="password" placeholder="password" name="password" required>
-			<input type="submit" value="Login">
+			<input type="submit" class="pure-button pure-button-primary" value="Login">
+		</fieldset>
 		</form>
 	</div>
 </div>
