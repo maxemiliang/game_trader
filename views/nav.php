@@ -4,7 +4,7 @@
 <input id="bmenub" type="checkbox" class="show">
 <label for="bmenub" class="burger pseudo button">menu</label> -->
 
-  <div class="pure-menu pure-menu-horizontal">
+  <div class="pure-menu">
     <a href="<?= $base ?>" class="pure-menu-heading pure-menu-link">
       <span>Game Trader</span>
     </a>

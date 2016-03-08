@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= $rout->baseurl; ?>/css/side-menu.css">
     <!-- <link href="https://cdn.jsdelivr.net/g/picnicss@5.1.0(picnic.min.css+plugins.min.css)" rel="stylesheet"> -->
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script defer src="<?= $rout->baseurl; ?>/js/ui.js"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
 
