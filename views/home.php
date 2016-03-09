@@ -16,7 +16,7 @@ include "head.php";
 		</div>
 
 
-        <h6>Posted by: <div class="chip"><i class="material-icons left">person</i><a href='user/<?php echo $row['username']?>' role='button'><?php echo $row['username']."</a></div> at: ".$row['date'] ?></h6>
+        <blockquote><h6>Posted by: <div class="chip"><i class="material-icons left">person</i><a href='user/<?php echo $row['username']?>' role='button'><?php echo $row['username']."</a></div> at: ".$row['date'] ?></h6></blockquote>
         <br>
 		<div class="card-content">
         <p>

@@ -14,7 +14,7 @@
 
 		if (isset($_SESSION["redir"])) {
 
-			echo "<p class='red'>".$_SESSION["redir"]."</p>";
+			echo "<div class='chip red'>".$_SESSION["redir"]."</div><br><br>";
 			unset($_SESSION["redir"]);
 
 		}	
@@ -22,7 +22,7 @@
 		?>	
 
 		<form action="<?= $base ?>/update" method="post" class="pure-form">
-			Insert/Update Steam Trade Url:<input type="text" placeholder="Steam Trade Url" name="url" required>
+			Insert/Update Steam Trade Url:<input type="text" placeholder="http://steamcommunity.com/tradeoffer/new/?partner=xxxxxx&token=xxxxxx" name="url" required>
 			<input type="submit" class="waves-effect waves-light btn blue" value="Submit">
 		</form>
 

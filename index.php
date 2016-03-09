@@ -19,7 +19,7 @@ $login->createUser("admin", "admin123", 999);
 $app->get("/", function() use ($app) 
 {
 
-	$q = $app->db->query("SELECT trades.*, users.* FROM trades LEFT JOIN users ON users.uID=trades.userID ORDER BY date DESC;");
+	$q = $app->db->query("SELECT trades.*, users.username, users.steam FROM trades LEFT JOIN users ON users.uID=trades.userID ORDER BY date DESC;");
 
 	$r = $q->fetchAll();
 
@@ -34,6 +34,27 @@ $app->get("/login", function() use ($app)
 
 });
 
+$app->get("/trade/:id", function($id) use ($app) 
+{
+
+	$q = $app->db->prepare("SELECT trades.*, users.username FROM trades LEFT JOIN users ON users.uID=trades.userID WHERE tID = ?");
+
+	$q->execute(array($id));
+
+	$r = $q->fetchAll();
+
+	if($q->rowCount() > 0) {
+
+		$app->render("trade.php", $r);
+
+	} else {
+
+		$app->render("404.php");
+
+	}
+
+});
+
 $app->get("/add", function() use ($app, $login) 
 {
 
@@ -43,7 +64,7 @@ $app->get("/add", function() use ($app, $login)
 	
 	} else {
 
-		$app->redirect("/", "");
+		$app->redirect("/");
 
 	}
 
@@ -71,7 +92,7 @@ $app->post("/adduser", function() use ($app, $login)
 
 	if ($adduser == 1) {
 
-		$app->redirect("/", "");
+		$app->redirect("/");
 
 	} else if ($adduser == 2) {
 
@@ -93,7 +114,7 @@ $app->post("/login/user", function() use ($app, $login)
 
 	if ($login->tryLogin($_POST)) {
 
-		$app->redirect("/", "");
+		$app->redirect("/");
 
 	} else {
 
@@ -108,7 +129,7 @@ $app->get("/logout", function() use ($app, $login)
 
 	$login->tryLogout();
 
-	$app->redirect("/", "");
+	$app->redirect("/");
 
 });
 
@@ -183,7 +204,7 @@ $app->post("/addtrade", function() use ($app, $login)
 
 						$sth->execute(array($_POST['have'], $_POST['want'], $_POST['text'], $_POST['img'], $_SESSION['userID']));
 
-						$app->redirect("/", "");
+						$app->redirect("/");
 
 					} else {
 

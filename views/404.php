@@ -1,7 +1,7 @@
 <?php 
 
 
-echo "ERROR FILE NOT FOUND!";
+echo "ERROR TRADE NOT FOUND!";
 
 
 ?>
