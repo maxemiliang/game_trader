@@ -23,7 +23,7 @@
 
 		<form action="<?= $base ?>/update" method="post" class="pure-form">
 			Insert/Update Steam Trade Url:<input type="text" placeholder="Steam Trade Url" name="url" required>
-			<input type="submit" class="pure-button pure-button-primary" value="Submit">
+			<input type="submit" class="waves-effect waves-light btn blue" value="Submit">
 		</form>
 
 		<?php

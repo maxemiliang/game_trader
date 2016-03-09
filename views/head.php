@@ -14,19 +14,25 @@
     <title>Game Trader</title>
 
     <link rel="stylesheet" href="<?= $rout->baseurl; ?>/css/style.css">
-    <link rel="stylesheet" href="<?= $rout->baseurl; ?>/css/side-menu.css">
-    <!-- <link href="https://cdn.jsdelivr.net/g/picnicss@5.1.0(picnic.min.css+plugins.min.css)" rel="stylesheet"> -->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <script defer src="<?= $rout->baseurl; ?>/js/ui.js"></script>
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <script defer src="<?= $base; ?>/js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
   </head>
 
   <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <div id="layout">
-    <div id="menu">
 
 
 <?php

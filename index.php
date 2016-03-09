@@ -60,7 +60,7 @@ $app->get("/exit/:url", function($url) use ($app)
 {
 
 	echo "<head><title>Leaving site!</title></head>";
-	echo "<div style='border: 1px solid black; padding: 20px;'><h1 style='color:red;'>Confirm Action!</h1><h2>Warning your leaving Game Trader to the url:</h2> <h3><a style='color: white; text-decoration: none; background: red; padding: 7px; border-radius: 10px;' href='".$url."' target='_blank'>".$url."</a></h3><h3><a style='color: white; text-decoration: none; background: blue; padding: 7px; border-radius: 10px;' href='".$app->baseurl."'>Back to safety</a></h3></div>";
+	echo "<div style='border: 1px solid black; padding: 20px;'><h1 style='color:red;'>Confirm Action!</h1><h2>Warning you're leaving Game Trader to the url:</h2> <h3><a style='color: white; text-decoration: none; background: red; padding: 7px; border-radius: 10px;' href='".$url."' target='_blank'>".$url."</a></h3><h3><a style='color: white; text-decoration: none; background: blue; padding: 7px; border-radius: 10px;' href='".$app->baseurl."'>Back to safety</a></h3></div>";
 
 });
 

@@ -15,14 +15,12 @@
 ?>
 
 		<form id="login" action="<?= $base ?>/login/user" method="post" class="pure-form pure-form-stacked">
-		<fieldset>
-			<legend>Login</legend>
+			<h1>Login</h1>
 			<label for="username">Username</label>
 			<input type="text" placeholder="username" name="username" required>
 			<label for="password">Password</label>
 			<input type="password" placeholder="password" name="password" required>
-			<input type="submit" class="pure-button pure-button-primary" value="Login">
-		</fieldset>
+			<input type="submit" class="btn waves-effect waves-light blue" value="Login">
 		</form>
 	</div>
 </div>

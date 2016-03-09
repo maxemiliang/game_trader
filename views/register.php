@@ -16,14 +16,12 @@
 ?>
 
 		<form id="register" class="pure-form pure-form-stacked" action="<?= $base ?>/adduser" method="post">
-		<fieldset>
-			<legend>Register</legend>
+			<h1>Register</h1>
 			<label for="username">Username</label>
-			<input type="text" placeholder="username" name="username" required>
+			<input id="username" type="text" placeholder="username" name="username" required>
 			<label for="password">Password</label>
-			<input type="password" placeholder="password" name="password" required>
-			<input type="submit" class="pure-button pure-button-primary" value="Register">
-		</fieldset>
+			<input id="password" type="password" placeholder="password" name="password" required>
+			<input type="submit" class="btn waves-effect waves-light blue" value="Register">
 		</form>
 	</div>
 </div>

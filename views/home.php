@@ -4,20 +4,21 @@ include "head.php";
 
 ?>
     
-<div class="pure-g">
+<div class="row">
 <?php
     foreach($v as $row) {
         ?>
-        <div class='pure-u-1-3 card'>
+        <div class='col s6'>
+		<div class="card">
+		<div class="card-image">
+        	<img class="responsive-img" src="img/<?php echo $row['img'] ?>"alt="Image">
+        	<span class="card-title blue">Has: <?php echo $row['have'] ?> and Wants: <?php echo $row['wants'] ?></span>
+		</div>
 
-        <img class="pure-img" src="img/<?php echo $row['img'] ?>"alt="Image">
 
-        <h1>Has: <?php echo $row['have'] ?></h1>
-        <h1>Want: <?php echo $row['wants'] ?></h1>
-
-        <h6>Posted by: <a href='user/<?php echo $row['username']?>' role='button'><?php echo $row['username']."</a> at: ".$row['date'] ?></h6>
+        <h6>Posted by: <div class="chip"><i class="material-icons left">person</i><a href='user/<?php echo $row['username']?>' role='button'><?php echo $row['username']."</a></div> at: ".$row['date'] ?></h6>
         <br>
-
+		<div class="card-content">
         <p>
         <?php 
             if (strlen($row['text']) >= 50) {
@@ -27,11 +28,13 @@ include "head.php";
             } 
         ?>
         </p>
-        </p>
+        </div>
 
-        <a class='button' href='trade/<?php echo $row['tID']?>' role='button'>View this trade</a>
-        <a class='button' href='exit/<?php echo $row['steam']?>' role='button'>Send Trade offer</a>
-
+		<div class="card-action">
+        <a class='waves-effect waves-light btn blue' href='trade/<?php echo $row['tID']?>' role='button'><i class="material-icons left">pageview</i>View this trade</a>
+        <a class='waves-effect waves-light btn red' href='exit/<?php echo $row['steam']?>' role='button'><i class="material-icons left">link</i>Send Trade offer</a>
+        </div>
+		</div>
 		</div>
 
         <?php

@@ -1,30 +1,23 @@
-
-
-<!--   responsive
-<input id="bmenub" type="checkbox" class="show">
-<label for="bmenub" class="burger pseudo button">menu</label> -->
-
-  <div class="pure-menu">
-    <a href="<?= $base ?>" class="pure-menu-heading pure-menu-link">
-      <span>Game Trader</span>
-    </a>
-    <ul class="pure-menu-list">
-      <li class="pure-menu-item"><a href="<?= $base ?>" class="pure-menu-link">Home</a></li>
+<!-- <input id="bmenub" type="checkbox" class="show">
+<label for="bmenub" class="burger pseudo button">menu</label>
+ -->
+ <div class="navbar-fixed red">
+  <nav>
+    <div class="nav-wrapper blue">
+    <a href="<?= $base ?>" class="brand-logo">Game Trader</a>
+    <ul id="nav-mobile" class="right">
       <?php if (isset($_SESSION["userID"]) != true) { ?>
-        <li class="pure-menu-item"><a href="<?= $base ?>/login" class="pure-menu-link">Login</a></li>
-        <li class="pure-menu-item"><a href="<?= $base ?>/register" class="pure-menu-link">Register</a></li>
+        <li ><a href="<?= $base ?>/login">Login</a></li>
+        <li><a href="<?= $base ?>/register">Register</a></li>
+        </ul>
       <?php } else { ?>
-        <li class="pure-menu-item"><a href="<?= $base ?>/add" class="pure-menu-link">Create a new trade</a></li>
-        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-          <a href="#" id="menuLink1" class="pure-menu-link">Account</a>
-          <ul class="pure-menu-children">
-            <li class="pure-menu-item"><a href="<?= $base ?>/user/<?= $_SESSION['user']; ?>" class="pure-menu-link">Logged In as: <?= $_SESSION["user"]; ?></a></li>
-            <li class="pure-menu-item"><a href="<?= $base ?>/logout" class="pure-menu-link">Logout</a></li>
-          </ul>
-        </li>
+        <li><a class="waves-effect waves-light btn blue lighten-2" href="<?= $base ?>/add">Create a new trade</a></li>
+        <li><a href="<?= $base ?>/user/<?= $_SESSION['user']; ?>"><i class="material-icons left">person</i> <?= $_SESSION["user"]; ?></a></li>
+        <li><a href="<?= $base ?>/logout">Logout</a></li>
+        </ul>
       <?php } ?>
-  </div>
-  </div>
-  </div>
-    <div id="main">
-    <div class="content">
+    </div>
+</nav>
+</div>
+
+<div class="container">
